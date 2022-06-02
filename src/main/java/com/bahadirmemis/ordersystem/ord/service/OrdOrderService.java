@@ -112,4 +112,12 @@ public class OrdOrderService {
             ordOrderProductEntityService.delete(ordOrderProduct);
         }
     }
+
+    public void cancelOrdOrder(Long orderId) {
+
+        OrdOrder ordOrder = ordOrderEntityService.getByIdWithControl(orderId);
+
+        ordOrder.setDeliveryStatus(EnumOrdDeliveryStatus.CANCELLED);
+        ordOrderEntityService.save(ordOrder);
+    }
 }

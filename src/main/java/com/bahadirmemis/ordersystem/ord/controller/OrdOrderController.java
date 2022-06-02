@@ -1,5 +1,6 @@
 package com.bahadirmemis.ordersystem.ord.controller;
 
+import com.bahadirmemis.ordersystem.gen.dto.RestResponse;
 import com.bahadirmemis.ordersystem.ord.dto.OrdOrderDto;
 import com.bahadirmemis.ordersystem.ord.dto.OrdOrderSaveRequestDto;
 import com.bahadirmemis.ordersystem.ord.service.OrdOrderService;
@@ -56,5 +57,13 @@ public class OrdOrderController {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id){
         ordOrderService.delete(id);
+    }
+
+    @PatchMapping("/cancel/{orderId}")
+    public ResponseEntity cancel(@PathVariable Long orderId){
+
+        ordOrderService.cancelOrdOrder(orderId);
+
+        return ResponseEntity.ok(RestResponse.empty());
     }
 }
