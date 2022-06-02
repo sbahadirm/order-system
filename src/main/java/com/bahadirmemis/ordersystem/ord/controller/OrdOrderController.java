@@ -28,7 +28,7 @@ public class OrdOrderController {
 
         OrdOrderDto ordOrderDto = ordOrderService.saveOrdOrder(ordOrderSaveRequestDto);
 
-        return ResponseEntity.ok(ordOrderDto);
+        return ResponseEntity.ok(RestResponse.of(ordOrderDto));
     }
 
     @GetMapping("/{id}")
@@ -36,7 +36,7 @@ public class OrdOrderController {
 
         OrdOrderDto ordOrder = ordOrderService.getOrdOrderById(id);
 
-        return ResponseEntity.ok(ordOrder);
+        return ResponseEntity.ok(RestResponse.of(ordOrder));
     }
 
     @GetMapping("/customers/{customerId}")
@@ -44,19 +44,21 @@ public class OrdOrderController {
 
         List<OrdOrderDto> ordOrderDtoList = ordOrderService.getOrdOrderByCustomerId(customerId);
 
-        return ResponseEntity.ok(ordOrderDtoList);
+        return ResponseEntity.ok(RestResponse.of(ordOrderDtoList));
     }
 
     @GetMapping
     public ResponseEntity findAll(){
         List<OrdOrderDto> ordOrderDtoList = ordOrderService.findAll();
 
-        return ResponseEntity.ok(ordOrderDtoList);
+        return ResponseEntity.ok(RestResponse.of(ordOrderDtoList));
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id){
+    public ResponseEntity delete(@PathVariable Long id){
         ordOrderService.delete(id);
+
+        return ResponseEntity.ok(RestResponse.empty());
     }
 
     @PatchMapping("/cancel/{orderId}")
