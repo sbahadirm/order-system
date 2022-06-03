@@ -76,8 +76,8 @@ class OrdOrderControllerTest extends BaseTest {
     void getOrdOrderById() throws Exception {
 
         MvcResult result = mockMvc.perform(
-                get(BASE_PATH+ "/1")
-                        .content("1L")
+                get(BASE_PATH+ "/1001")
+                        .content("1001L")
                         .contentType(MediaType.APPLICATION_JSON)
         ).andExpect(status().isOk()).andReturn();
 
@@ -116,8 +116,8 @@ class OrdOrderControllerTest extends BaseTest {
     void delete() throws Exception {
 
         MvcResult result = mockMvc.perform(
-                MockMvcRequestBuilders.delete(BASE_PATH+ "/1")
-                        .content("1L")
+                MockMvcRequestBuilders.delete(BASE_PATH+ "/1003")
+                        .content("1003L")
                         .contentType(MediaType.APPLICATION_JSON)
         ).andExpect(status().isOk()).andReturn();
 
@@ -130,8 +130,8 @@ class OrdOrderControllerTest extends BaseTest {
     void cancel() throws Exception {
 
         MvcResult result = mockMvc.perform(
-                MockMvcRequestBuilders.patch(BASE_PATH+ "/cancel/2")
-                        .content("2L")
+                MockMvcRequestBuilders.patch(BASE_PATH+ "/cancel/1004")
+                        .content("1004L")
                         .contentType(MediaType.APPLICATION_JSON)
         ).andExpect(status().isOk()).andReturn();
 
