@@ -1,5 +1,6 @@
 package com.bahadirmemis.ordersystem.ord.dto;
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
@@ -15,6 +16,7 @@ import java.util.List;
  * @since 1.0.0
  */
 @Data
+@Builder
 public class OrdOrderSaveRequestDto {
 
     @NotNull
